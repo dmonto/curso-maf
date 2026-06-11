@@ -1,1 +1,5 @@
 private.env
+*.jsonl
+*.json
+*.pyc
+maf-lab-tema4
