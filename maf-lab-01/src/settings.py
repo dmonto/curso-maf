@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 
 
-load_dotenv("..\\..\\.env")
+load_dotenv("..\\.env")
 
 
 def require_env(name: str) -> str:

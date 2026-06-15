@@ -9,4 +9,6 @@ serve(
     entities=[agent],
     auto_open=True,
     auth_enabled=False,
+    mode="developer",
+    instrumentation_enabled=True,    
 )
