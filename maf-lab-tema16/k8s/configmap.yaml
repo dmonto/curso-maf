@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: maf-agent-config
+  namespace: maf-agents
+data:
+  APP_ENV: "aks"
+  RUNTIME_TARGET: "kubernetes"
+  AZURE_AUTH_MODE: "api_key"
+
+  AZURE_AI_FOUNDRY_ENDPOINT: "https://curso-ia-foundry.services.ai.azure.com"
+  AZURE_OPENAI_API_VERSION: "2024-10-21"
+
+  AZURE_OPENAI_CHAT_DEFAULT_DEPLOYMENT: "gpt-4.1-mini"
+  AZURE_OPENAI_CHAT_FAST_DEPLOYMENT: "gpt-4.1-mini"
+  AZURE_OPENAI_CHAT_QUALITY_DEPLOYMENT: "gpt-4.1-mini"
+  DEFAULT_CHAT_MODEL: "chat_fast"
+
+  PROMPT_VERSION: "dev"
+  GRAPH_VERSION: "dev"
+  IMAGE_TAG: "v1"
+
+  TELEMETRY_ENABLED: "true"
+  OTEL_SERVICE_NAME: "maf-support-agent"
+  APPLICATIONINSIGHTS_CONNECTION_STRING: "InstrumentationKey=7e2db029-4848-4305-aa69-d1f58b856f60;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/;ApplicationId=812531d0-ac7e-47ed-9326-7db19d73371f"

@@ -1,0 +1,46 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  RUN_LLM_TESTS: "0"
+  RUN_MODEL_COMPARISON: "0"
+  RUN_DRIFT_CHECK: "0"
+  REQUIRE_BASELINE: "0"
+
+steps:
+  - checkout: self
+
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: "3.13"
+
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+    displayName: Install dependencies
+
+  - script: |
+      python run_test_suite.py
+    displayName: Run offline test suite
+    env:
+      RUN_LLM_TESTS: $(RUN_LLM_TESTS)
+      RUN_MODEL_COMPARISON: $(RUN_MODEL_COMPARISON)
+      RUN_DRIFT_CHECK: $(RUN_DRIFT_CHECK)
+      REQUIRE_BASELINE: $(REQUIRE_BASELINE)
+
+  - task: PublishPipelineArtifact@1
+    condition: always()
+    inputs:
+      targetPath: reports
+      artifact: maf-test-reports
+      publishLocation: pipeline

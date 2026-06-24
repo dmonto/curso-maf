@@ -3,4 +3,5 @@ private.env
 *.json
 *.pyc
 data
+*.tar
 maf-lab-tema14

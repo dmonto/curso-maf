@@ -1,0 +1,12 @@
+.git/
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+
+.env
+.env.container
+*.pyc
+
+logs/
+data/
